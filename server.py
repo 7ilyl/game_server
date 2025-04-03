@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -6,7 +7,11 @@ import jwt as pyjwt  # Используем PyJWT
 app = Flask(__name__)
 
 # Настройка базы данных (SQLite для простоты)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/users.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
+    "DATABASE_URL", "postgresql://mygame_db_user:RHDgEFkBdSFLICAq6YChtayjl2sBZrg5@dpg-cvn1mj7gi27c73beujtg-a/mygame_db"
+)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
 db = SQLAlchemy(app)
 
 # Секретный ключ для JWT
