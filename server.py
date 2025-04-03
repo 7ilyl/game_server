@@ -14,6 +14,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
+with app.app_context():
+    db.create_all()
 # Секретный ключ для JWT
 SECRET_KEY = "1q2w3e4r5t6y7u8i9o0p"
 
