@@ -24,6 +24,10 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
+@app.route('/')
+def index():
+    return '🎮 Game Server is running and alive!'
+
 # Регистрация пользователя
 @app.route('/api/register', methods=['POST'])
 def register():
