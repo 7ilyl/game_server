@@ -100,4 +100,4 @@ def auto_login():
         return jsonify({"error": "Неверный токен"}), 401
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
